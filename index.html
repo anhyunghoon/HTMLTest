@@ -1,11 +1,151 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>내 첫 웹페이지</title>
+	<title>Tune H</title>
+	
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=no" charset="utf-8">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0XWB2YJ0J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W0XWB2YJ0J');
+
+(function(w,d,s,l,i){
+	w[l]=w[l]||[];
+	w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+	var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+	j.async=true;
+	j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+	f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NVW89JQB');
+</script>
+
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/jquery-ui.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/ui.common.js?v=2025061209"></script>
+<script type="text/javascript" src="/javascript/commonJui.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/swiper.min.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/fullcalendar-6.1.8.min.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/jquery-circle-progress.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/jquery-touch-punch.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/chart.min.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/chartjs-plugin-datalables@2.0.0.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/gauge.min.js?v=2025061209"></script>
+<script type="text/javascript" src="/resources/js/nativePermission.js?v=2025061209"></script>
+<link rel="stylesheet" href="/resources/css/jquery-ui.css?v=2025061209">
+<script type="text/javascript">
+//<![CDATA[
+_hra.device = "A";
+//]]>
+</script>
+<link rel="stylesheet" href="/cdn/resources/css/swiper.min.css?v=2025061209">
+<link rel="stylesheet" href="/cdn/resources/css/guide.css?v=2025061209">
+
+
+<script>
+$("body").ready(function(){
+	$("body").prepend($("<noscript>").append($("<iframe>",{"src":"https://www.googletagmanager.com/ns.html?id=GTM-NVW89JQB", "height":"0", "width":"0", "style":"display:none;visibility:hidden;"},"<iframe>")));
+});
+</script>
+
+
+	<!-- head meta에 이미지, 제목, 내용 추가 -->
+	
+	
+	
+
+<script type="text/javascript">
+function fnGoApp(){
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
+
+	if(userAgent.match(/iPhone/)) { //아이폰일때
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/us/app/tune-h/id1579275132";
+			}
+		},
+		2500
+	);
+
+	setTimeout(function() { location.href = "tunehApp://?vdata=245"; } ,0);
+
+	}
+	else if(userAgent.match(/Android/)) { //안드로이드일 때
+		if("https://dev.tune-h.com" == "https://www.tune-h.com"){
+			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health.dev;end';
+		}else{
+			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health;end';
+		}
+	}
+}
+
+</script>
+
+<script type="text/javascript">
+
+var digitalData = digitalData || {};
+digitalData ={
+	page:{
+		pageInfo:{
+			pageID:"FLO-034",
+			pageName:"딥링크랜딩1",
+			destinationURL:document.location.href,
+			title:"딥링크랜딩1",
+			pageType:"입력/수정1",
+			siteSection:"딥링크랜딩1",
+			siteSubsection:"딥링크랜딩1",
+			server:"TuneH, https://www.tune-h.com"
+		},
+		category:{
+			primaryCategory:"",
+			secondaryCategory:"",
+		}
+	},
+	product:[
+		{
+			productInfo:{
+				productEvent:"",
+				productName:""
+			}
+		}
+	],
+	frstecid:"",
+	language:"ko",
+	counrty:"kr"
+};
+
+</script>
+
+
 </head>
-<body>
-    <h1>안녕하세요!</h1>
-    <p>이것은 테스트용 웹페이지입니다.</p>
+</head>
+<body class="type_walkthrough page bridge" onload="fnGoApp();">
+	 <div class="page-slide">
+        <div class="walk_tit">
+            <img src="/cdn/resources/img/img_tune_bridge.png" alt="">
+            <h2>Tune H와 함께 건강한<br>라이프를 시작해 볼까요?</h2>
+        </div>
+    </div>
+    <div class="btn_wrappp">
+        <button type="button" onclick="fnGoApp();" class="btn_load">Tune H 열기</button>
+
+    </div>
+
 </body>
+<script>
+//fnGoApp();
+</script>
 </html>
