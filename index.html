@@ -141,6 +141,30 @@ digitalData ={
 		    <li><a href="https://www.youtube.com" target="_blank">유튜브</a></li>
 		    <li><a href="https://www.github.com" target="_blank">깃허브</a></li>
 		    <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
+			<p>파일 선택 (다중 가능):</p>
+			<li><input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf"><br><br></li>
+			<!-- 사진 촬영 허용 -->
+  			<p>사진 촬영 또는 선택:</p>
+  			<input type="file" id="cameraInput" accept="image/*" capture="environment"><br><br>
+
+  			<!-- 비디오 촬영 허용 -->
+  			<p>비디오 촬영 또는 선택:</p>
+  			<input type="file" id="videoInput" accept="video/*" capture="camcorder"><br><br>
+
+  			<!-- 선택된 파일 이름 표시용 -->
+  			<script>
+    			document.querySelectorAll('input[type="file"]').forEach(input => {
+      			input.addEventListener('change', (e) => {
+        			const files = e.target.files;
+        		if (files.length > 0) {
+          			alert(`선택한 파일 수: ${files.length}\n첫 파일 이름: ${files[0].name}`);
+        		} else {
+          			alert("파일이 선택되지 않았습니다.");
+        		}
+      			});
+    		});
+  			</script>
+
 	  </ul>
     </div>
 
