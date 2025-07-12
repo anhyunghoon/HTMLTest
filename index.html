@@ -85,6 +85,9 @@ function fnGoApp(){
 		}
 	}
 }
+function openNewWindow() {
+    window.open('https://example.com');
+}
 
 </script>
 
@@ -137,8 +140,9 @@ digitalData ={
     <div class="btn_wrappp">
 	    <ul>
 		    <li></li><button type="button" onclick="fnGoApp();" class="btn_load">Tune H 열기</button></li>
-		    <li><a href="https://www.naver.com" target="_blank">네이버</a></li>
-		    <li><a href="https://www.google.com" target="_blank">구글</a></li>
+		    <li></li><button type="button" onclick="openNewWindow();" class="btn_load">window.open</button></li>
+		    <li><a href="https://www.naver.com" target="_blank">네이버 새창 열기</a></li>
+		    <li><a href="https://www.google.com" target="_blank">네이버 새창 열기</a></li>
 		    <li><a href="https://www.youtube.com" target="_blank">유튜브</a></li>
 		    <li><a href="https://www.github.com" target="_blank">깃허브</a></li>
 		    <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
