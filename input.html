@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>WebView Keyboard Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    .container {
+      height: 1500px; /* 스크롤 가능하게 */
+    }
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .fixed-box {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>키보드 테스트 페이지</h2>
+    <p>아래 입력창을 눌러보세요. 키보드가 올라오면 자동으로 스크롤됩니다.</p>
+
+    <input type="text" placeholder="이름 입력" />
+    <input type="email" placeholder="이메일 입력" />
+    <input type="text" placeholder="아래쪽 입력창" />
+  </div>
+
+  <div class="fixed-box">하단 고정 박스</div>
+
+  <script>
+    // visualViewport를 이용해 키보드 높이 감지
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => {
+        const keyboardHeight = window.innerHeight - window.visualViewport.height;
+
+        console.log("keyboard height:", keyboardHeight);
+
+        if (keyboardHeight > 0) {
+          // 키보드 열림 → 포커스된 입력창을 보이게 스크롤
+          if (document.activeElement && document.activeElement.tagName === "INPUT") {
+            document.activeElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
