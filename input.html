@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" 
+  <meta charset="UTF-8" />
+  <meta name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>WebView Keyboard Test</title>
   <style>
@@ -10,10 +10,11 @@
       font-family: sans-serif;
       margin: 0;
       padding: 20px;
-      background: #f8f8f8;
+      background: #f9f9f9;
+      transition: padding-bottom 0.25s ease; /* 키보드 열릴 때 부드럽게 */
     }
     .container {
-      height: 1500px; /* 스크롤 가능하게 */
+      height: 1500px; /* 스크롤 확인용 */
     }
     input {
       display: block;
@@ -25,45 +26,51 @@
     }
     .fixed-box {
       position: fixed;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: #ffffff;
-      border: 1px solid #ddd;
-      padding: 10px;
+      border-top: 1px solid #ddd;
+      padding: 15px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>키보드 테스트 페이지</h2>
-    <p>아래 입력창을 눌러보세요. 키보드가 올라오면 자동으로 스크롤됩니다.</p>
+    <h2>키보드 가림 방지 테스트</h2>
+    <p>아래 입력창을 눌러보세요.</p>
 
     <input type="text" placeholder="이름 입력" />
     <input type="email" placeholder="이메일 입력" />
-    <input type="text" placeholder="아래쪽 입력창" />
+    <input type="text" placeholder="하단 입력창 테스트" />
   </div>
 
-  <div class="fixed-box">하단 고정 박스</div>
+  <div class="fixed-box">하단 고정 영역</div>
 
   <script>
-    // visualViewport를 이용해 키보드 높이 감지
+    // 키보드 감지 및 입력창 자동 스크롤
     if (window.visualViewport) {
       window.visualViewport.addEventListener("resize", () => {
         const keyboardHeight = window.innerHeight - window.visualViewport.height;
 
-        console.log("keyboard height:", keyboardHeight);
-
         if (keyboardHeight > 0) {
-          // 키보드 열림 → 포커스된 입력창을 보이게 스크롤
-          if (document.activeElement && document.activeElement.tagName === "INPUT") {
+          // 키보드 열림 → body에 padding-bottom 추가
+          document.body.style.paddingBottom = keyboardHeight + "px";
+
+          // 포커스된 input을 자동으로 위로 올려줌
+          if (document.activeElement &&
+              (document.activeElement.tagName === "INPUT" ||
+               document.activeElement.tagName === "TEXTAREA")) {
             document.activeElement.scrollIntoView({
               behavior: "smooth",
               block: "center"
             });
           }
+        } else {
+          // 키보드 닫힘 → padding 원래대로
+          document.body.style.paddingBottom = "0px";
         }
       });
     }
