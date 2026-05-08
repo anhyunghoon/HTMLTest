@@ -85,6 +85,19 @@ function fnGoApp(){
 		}
 	}
 }
+function goToAppStore() {
+    // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
+    navigator.clipboard.writeText("myapp://product/12345");
+    // 앱스토어 이동
+    window.location.href = "https://apps.apple.com/app/id123456789";
+}
+
+function goToGooglePlay() {
+    // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
+    navigator.clipboard.writeText("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
+    // 앱스토어 이동
+    window.location.href = "ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee";
+}
 function openNewWindow() {
     window.open('https://example.com');
 }
@@ -141,6 +154,8 @@ digitalData ={
 	    <ul>
 		    <li></li><button type="button" onclick="fnGoApp();" class="btn_load">Tune H 열기</button></li>
 		    <li></li><button type="button" onclick="openNewWindow();" class="btn_load">window.open</button></li>
+			<li></li><button type="button" onclick="goToAppStore();" class="btn_load">Deep Link 열기(AppStore)</button></li>
+			<li></li><button type="button" onclick="goToGooglePlay();" class="btn_load">Deep Link 열기(GooglePlay)</button></li>
 		    <li><a href="https://www.naver.com" target="_blank">네이버 새창 열기</a></li>
 		    <li><a href="https://m.naver.com">네이버</a></li>
 		    <li><a href="https://www.google.com" target="_blank">구글 새창 열기</a></li>
@@ -157,9 +172,7 @@ digitalData ={
 		    <li><a href="https://ga.lina.co.kr/html/gap/GM/GPN630M0.html">GA 운영계</a></li>
 			<li><a href="https://play.google.com/store/apps/details?id=lina.channel.ldc.app">라이나생명 마켓이동(웹)</a></li>
 			<li><a href="market://details?id=lina.channel.ldc.app">라이나생명 마켓이동(앱)</a></li>
-            <li><a href="https://apps.apple.com/app/id6446927821">라이나생명 앱스토어 이동</a></li>
-			<li><a href="https://apps.apple.com/app/id6446927821">라이나생명 앱스토어 이동1</a></li>
-
+            
 			<p>파일 선택 (다중 가능):</p>
 			<li><input type="file" id="fileInput" multiple accept="image/*,video/*,application/pdf"><br><br></li>
 			<!-- 사진 촬영 허용 -->
