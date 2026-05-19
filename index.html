@@ -98,16 +98,16 @@ function fnGoLDCApp(){
 		2500
 	);
 
-	setTimeout(function() { location.href = "ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+	setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
 
 	}
 	else if(userAgent.match(/Android/)) { //안드로이드일 때
-			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health;end';
+			location.href = 'intent:\/\/dev-m.digitallina.com/landing/marketing/guarantee#Intent;scheme=ldcapp-url;package=lina.channel.ldc.app.qa;end';
 
 			// 앱 미설치 시 마켓 이동 타이머
         setTimeout(function() {
 				const targetPath = encodeURIComponent("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
-				const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app.qa&referrer=${targetPath}`;
 
             window.location.href = storeUrl;
         }, 1000);
