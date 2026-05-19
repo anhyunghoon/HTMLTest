@@ -85,6 +85,34 @@ function fnGoApp(){
 		}
 	}
 }
+function fnGoLDCApp(){
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
+
+	if(userAgent.match(/iPhone/)) { //아이폰일때
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id123456789";
+			}
+		},
+		2500
+	);
+
+	setTimeout(function() { location.href = "ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+
+	}
+	else if(userAgent.match(/Android/)) { //안드로이드일 때
+			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health;end';
+
+			// 앱 미설치 시 마켓 이동 타이머
+        setTimeout(function() {
+				const targetPath = encodeURIComponent("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
+				const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+
+            window.location.href = storeUrl;
+        }, 1000);
+	}
+}
 function goToAppStore() {
     // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
     navigator.clipboard.writeText("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
@@ -162,7 +190,8 @@ digitalData ={
     </div>
     <div class="btn_wrappp">
 	    <ul>
-		    <li></li><button type="button" onclick="fnGoApp();" class="btn_load">Tune H 열기</button></li>
+		    <li></li><button type="button" onclick="fnGoApp();" class="btn_load">Tune H APP 열기</button></li>
+			<li></li><button type="button" onclick="fnGoLDCApp();" class="btn_load">LDC APP 열기</button></li>
 		    <li></li><button type="button" onclick="openNewWindow();" class="btn_load">window.open</button></li>
 			<li></li><button type="button" onclick="goToAppStore();" class="btn_load">Deep Link 열기(AppStore)</button></li>
 			<li></li><button type="button" onclick="goToGooglePlay();" class="btn_load">Deep Link 열기(GooglePlay)</button></li>
