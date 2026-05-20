@@ -85,6 +85,7 @@ function fnGoApp(){
 		}
 	}
 }
+
 function fnGoLDCApp(){
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
@@ -115,8 +116,10 @@ function fnGoLDCApp(){
 		setTimeout(function() {
 			if ((new Date()).getTime() - visitTime < 3000) {
 				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
-				const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				//const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				const storeUrl = `market://details?id=lina.channel.ldc.app&referrer=${targetPath}`;
 				location.href = storeUrl;
+				
 			}
 		},
 		2500);
@@ -124,6 +127,7 @@ function fnGoLDCApp(){
 		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
 	}
 }
+
 function goToAppStore() {
     // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
     navigator.clipboard.writeText("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
