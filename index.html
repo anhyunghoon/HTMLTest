@@ -114,12 +114,14 @@ function fnGoLDCApp(){
 		*/
 		setTimeout(function() {
 			if ((new Date()).getTime() - visitTime < 3000) {
-				location.href = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app";
+				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
+				const storeUrl = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}";
+				location.href = storeUrl;
 			}
 		},
 		2500);
 
-		setTimeout(function() { location.href = "ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
 	}
 }
 function goToAppStore() {
