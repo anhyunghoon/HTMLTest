@@ -115,7 +115,7 @@ function fnGoLDCApp(){
 		setTimeout(function() {
 			if ((new Date()).getTime() - visitTime < 3000) {
 				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
-				const storeUrl = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}";
+				const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
 				location.href = storeUrl;
 			}
 		},
