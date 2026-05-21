@@ -104,6 +104,7 @@ function fnGoLDCApp(){
 
 		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
 		*/
+		/*
 		var hidden = false;
 
 		const storeUrl = "https://apps.apple.com/app/id6446927821";
@@ -126,6 +127,22 @@ function fnGoLDCApp(){
 		});
 
 		location.href = appUrl;
+		*/
+		
+		const appUrl = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+
+		const storeUrl = "https://apps.apple.com/app/id6446927821";
+
+		const iframe = document.createElement("iframe");
+
+		iframe.style.display = "none";
+		iframe.src = appUrl;
+
+		document.body.appendChild(iframe);
+
+		setTimeout(function () {
+			location.href = storeUrl;
+		}, 1500);
 
 	}
 	else if(userAgent.match(/Android/)) { //안드로이드일 때
