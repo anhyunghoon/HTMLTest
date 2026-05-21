@@ -7,6 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<meta name="apple-itunes-app" content="app-id=6446927821">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0XWB2YJ0J"></script>
 <script>
@@ -87,10 +88,33 @@ function fnGoApp(){
 }
 
 function fnGoLDCApp(){
+	// 기존 visitTime 변수가 위에 선언되어 있다고 가정합니다.
+	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+		var isPageHidden = false;
+
+		// 사용자가 앱으로 이동해서 화면이 가려지면 앱스토어로 이동하지 않도록 플래그 설정
+		document.addEventListener("visibilitychange", function() {
+			if (document.hidden) {
+				isPageHidden = true;
+			}
+		});
+
+		setTimeout(function() {
+			// 페이지가 백그라운드로 전환되지 않았다면 (즉, 앱이 안 열려서 웹에 머물러 있다면)
+			if (!isPageHidden && ((new Date()).getTime() - visitTime < 3500)) {
+				// 사파리에서는 안전하게 https:// 형태의 앱스토어 링크로 이동
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		}, 2500);
+	}
+
+}
+
+function fnGoLDCApp1(){
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
-	if(userAgent.match(/iPhone/)) { //아이폰일때
+	if(userAgent.match(/iPhone|iPad/)) { //아이폰일때
 		setTimeout(function() {
 			if ((new Date()).getTime() - visitTime < 3000) {
 				//location.href = "https://apps.apple.com/app/id6446927821";
