@@ -134,6 +134,7 @@ function fnGoLDCApp3(){
 function fnGoLDCApp(){
 	// 기존 visitTime 변수가 위에 선언되어 있다고 가정합니다.
 	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+		var visitTime = (new Date()).getTime();
 		var isPageHidden = false;
 
 		// 사용자가 앱으로 이동해서 화면이 가려지면 앱스토어로 이동하지 않도록 플래그 설정
