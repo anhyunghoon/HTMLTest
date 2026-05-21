@@ -89,52 +89,26 @@ function fnGoApp(){
 
 function fnGoLDCApp(){
 
-	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) { // 아이폰일 때
-		var isPageHidden = false;
+	if (userAgent.match(/iPhone/)) {
+    var visitTime = (new Date()).getTime();
 
-		// 사용자가 앱으로 이동해서 화면이 가려지면 앱스토어로 이동하지 않도록 감지
-		document.addEventListener("visibilitychange", function() {
-			if (document.hidden) {
-				isPageHidden = true;
-			}
-		});
-		window.addEventListener("pagehide", function() {
-			isPageHidden = true;
-		});
+    setTimeout(function () {
+        if ((new Date()).getTime() - visitTime < 3000) {
+            location.href = "https://apps.apple.com/app/id6446927821";
+        }
+    }, 2500);
 
-		// 1. [2.5초 후 실행] 앱 미설치 시 앱스토어 이동 로직
-		setTimeout(function() {
-			// 사용자가 여전히 웹 브라우저 화면에 머물고 있다면 (앱이 안 열렸다면)
-			if (!isPageHidden && ((new Date()).getTime() - visitTime < 3500)) {
-				location.href = "https://apps.apple.com/app/id6446927821";
-			}
-		}, 2500);
+    // ❌ 기존: location.href = "ldcapp-url://..."; → Safari 에러 팝업 발생
+    // ✅ 변경: iframe으로 호출
+    var iframe = document.createElement('iframe');
+    iframe.style.cssText = 'display:none; width:0; height:0; border:none;';
+    iframe.src = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+    document.body.appendChild(iframe);
 
-		// 2. [즉시 실행] 앱 실행 시도 (사파리 팝업 우회)
-		setTimeout(function() { 
-			var appScheme = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
-			
-			// 사파리에서는 iframe을 만들어 호출해야 "유효하지 않은 주소" 팝업을 우회할 수 있습니다.
-			var iframe = document.createElement("iframe");
-			iframe.style.border = "none";
-			iframe.style.width = "1px";
-			iframe.style.height = "1px";
-			iframe.style.position = "absolute";
-			iframe.style.top = "0";
-			iframe.style.left = "0";
-			iframe.src = appScheme;
-			
-			document.body.appendChild(iframe);
-			
-			// 호출 후 iframe 제거
-			setTimeout(function() {
-				if (iframe && iframe.parentNode) {
-					iframe.parentNode.removeChild(iframe);
-				}
-			}, 500);
-
-		}, 0);
-	}
+    setTimeout(function () {
+        document.body.removeChild(iframe);
+    }, 2000);
+}
 
 }
 function fnGoLDCApp2(){
