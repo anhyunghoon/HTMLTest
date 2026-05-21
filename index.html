@@ -1,42 +1,38 @@
-<!-- 상단에 현재 시간 계산용 태그 추가 (JSP 예시) -->
-<%@ page import="java.util.Date" %>
-<% String noCache = String.valueOf(new Date().getTime()); %>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <title>Tune H</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=no" charset="utf-8">
-<!-- [수정] 강력한 No-Cache 메타태그 세트 구성 -->
+<!-- [수정] Expires 값을 -1 또는 과거 날짜 표준으로 변경하여 완벽한 캐시 만료 유도 -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 <meta name="apple-itunes-app" content="app-id=6446927821">
 
-<!-- ... 중략 (구글 태그 매니저 생략) ... -->
+<!-- ... 중략 ... -->
 
-<!-- [수정] 모든 JS, CSS 경로 뒤에 고정값 대신 실시간 변수(<%=noCache%>) 적용 -->
-<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/jquery-ui.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/ui.common.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/javascript/commonJui.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/swiper.min.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/fullcalendar-6.1.8.min.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/jquery-circle-progress.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/jquery-touch-punch.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/chart.min.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/chartjs-plugin-datalables@2.0.0.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/gauge.min.js?v=<%=noCache%>"></script>
-<script type="text/javascript" src="/resources/js/nativePermission.js?v=<%=noCache%>"></script>
-<link rel="stylesheet" href="/resources/css/jquery-ui.css?v=<%=noCache%>">
+<!-- [수정] 정적 자원 버전 파라미터를 고유한 값(예: 타임스탬프 형태)으로 새로 갱신 -->
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/jquery-ui.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/ui.common.js?v=202605211200"></script>
+<script type="text/javascript" src="/javascript/commonJui.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/swiper.min.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/fullcalendar-6.1.8.min.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/jquery-circle-progress.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/jquery-touch-punch.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/chart.min.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/chartjs-plugin-datalables@2.0.0.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/gauge.min.js?v=202605211200"></script>
+<script type="text/javascript" src="/resources/js/nativePermission.js?v=202605211200"></script>
+<link rel="stylesheet" href="/resources/css/jquery-ui.css?v=202605211200">
 <script type="text/javascript">
 //<![CDATA[
 _hra.device = "A";
 //]]>
 </script>
-<link rel="stylesheet" href="/cdn/resources/css/swiper.min.css?v=<%=noCache%>">
-<link rel="stylesheet" href="/cdn/resources/css/guide.css?v=<%=noCache%>">
+<link rel="stylesheet" href="/cdn/resources/css/swiper.min.css?v=202605211200">
+<link rel="stylesheet" href="/cdn/resources/css/guide.css?v=202605211200">
 
 
 <script>
@@ -143,7 +139,7 @@ function fnGoLDCApp(){
 			}
 		}, 2500);
 		
-		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+		//setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
 	}
 
 }
