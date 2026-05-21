@@ -90,20 +90,20 @@ function fnGoApp(){
 function fnGoLDCApp(){
 
 	if (userAgent.match(/iPhone/)) {
-    var visitTime = (new Date()).getTime();
+		var visitTime = (new Date()).getTime();
 
-    setTimeout(function () {
-        if ((new Date()).getTime() - visitTime < 3000) {
-            location.href = "https://apps.apple.com/app/id6446927821";
-        }
-    }, 2500);
+		setTimeout(function () {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		}, 2500);
 
-    var anchor = document.createElement('a');
-    anchor.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
-    anchor.style.display = 'none';
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
+		var anchor = document.createElement('a');
+		anchor.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+		anchor.style.display = 'none';
+		document.body.appendChild(anchor);
+		anchor.click();
+		document.body.removeChild(anchor);
 	}
 }
 
