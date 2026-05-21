@@ -160,6 +160,39 @@ function fnGoLDCApp1(){
 
 function fnGoLDCApp(){
 	var userAgent = navigator.userAgent;
+
+    if (userAgent.match(/iPhone|iPad/)) {
+
+        var hidden = false;
+        const timer = setTimeout(function () {
+
+            if (!hidden) {
+
+                location.href =
+                    "https://apps.apple.com/app/id6446927821";
+            }
+
+        }, 2000);
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (document.hidden) {
+
+                    hidden = true;
+
+                    clearTimeout(timer);
+                }
+            }
+        );
+        location.href =
+            "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+    }
+
+}
+
+function fnGoLDCApp5(){
+	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
 	if(userAgent.match(/iPhone|iPad/)) { //아이폰일때
