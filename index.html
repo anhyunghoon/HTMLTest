@@ -164,29 +164,35 @@ function fnGoLDCApp(){
     if (userAgent.match(/iPhone|iPad/)) {
 
         var hidden = false;
-        const timer = setTimeout(function () {
+
+        const storeTimer = setTimeout(function () {
 
             if (!hidden) {
-
                 location.href =
                     "https://apps.apple.com/app/id6446927821";
             }
 
-        }, 2000);
+        }, 1500);
+
         document.addEventListener(
             "visibilitychange",
             function () {
 
                 if (document.hidden) {
-
                     hidden = true;
-
-                    clearTimeout(timer);
+                    clearTimeout(storeTimer);
                 }
             }
         );
-        location.href =
+
+        const iframe = document.createElement("iframe");
+
+        iframe.style.display = "none";
+
+        iframe.src =
             "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+
+        document.body.appendChild(iframe);
     }
 
 }
