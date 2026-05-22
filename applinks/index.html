@@ -2,7 +2,9 @@
 <html lang="ko">
 
 <head>
+
     <meta charset="utf-8" />
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0" />
@@ -11,23 +13,44 @@
 
     <script>
 
-        window.onload = function () {
+        // 새로고침 중복 방지
+        let isReloaded = false;
 
-            const ua = navigator.userAgent;
+        // 앱 실행 함수
+        function fnGoLDCApp() {
 
-            // iOS
-            if (/iPhone|iPad|iPod/i.test(ua)) {
+            const userAgent = navigator.userAgent;
 
+            const visitTime = (new Date()).getTime();
+
+            // iPhone
+            if (/iPhone|iPad|iPod/i.test(userAgent)) {
+
+                // 앱 미설치 시 App Store 이동
+                setTimeout(function () {
+
+                    // 아직 Safari 에 남아있으면
+                    if (
+                        (new Date()).getTime() - visitTime < 3000
+                    ) {
+
+                        location.href =
+                            "https://apps.apple.com/app/id6446927821";
+                    }
+
+                }, 2500);
+
+                // Universal Link 실행
                 setTimeout(function () {
 
                     location.href =
-                        "https://apps.apple.com/app/id6446927821";
+                        "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
 
-                }, 500);
+                }, 0);
             }
 
             // Android
-            else if (/Android/i.test(ua)) {
+            else if (/Android/i.test(userAgent)) {
 
                 setTimeout(function () {
 
@@ -36,7 +59,62 @@
 
                 }, 500);
             }
+        }
+
+        // 페이지 진입 시 실행
+        window.onload = function () {
+
+            //fnGoLDCApp();
         };
+
+        // 새로고침 함수
+        function refreshPage() {
+
+            if (isReloaded) {
+                return;
+            }
+
+            isReloaded = true;
+
+            console.log("페이지 새로고침");
+
+            location.reload();
+        }
+
+        // 백그라운드 → 포그라운드 복귀 감지
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                // 다시 화면이 보이면
+                if (!document.hidden) {
+
+                    refreshPage();
+                }
+            }
+        );
+
+        // Safari BFCache 대응
+        window.addEventListener(
+            "pageshow",
+            function (event) {
+
+                // 캐시 복귀
+                if (event.persisted) {
+
+                    refreshPage();
+                }
+            }
+        );
+
+        // 일부 브라우저 대응
+        window.addEventListener(
+            "focus",
+            function () {
+
+                refreshPage();
+            }
+        );
 
     </script>
 

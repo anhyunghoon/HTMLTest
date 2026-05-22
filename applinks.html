@@ -18,11 +18,12 @@
             // iOS
             if (/iPhone|iPad|iPod/i.test(ua)) {
 
-                setTimeout(function () {
+				// setTimeout(function () {
 
-                    location.href = "https://apps.apple.com/app/id6446927821";
+                //     location.href = "https://apps.apple.com/app/id6446927821";
 
-                }, 500);
+                // }, 500);
+				//fnGoLDCApp();
             }
 
             // Android
@@ -36,7 +37,32 @@
         };
 
     </script>
+	<script type="text/javascript"></script>
+	function fnGoLDCApp(){
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
 
+	if(userAgent.match(/iPhone/)) { //아이폰일때
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		},
+		2500);
+
+		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		//setTimeout(function() { location.href = "tunehApp://?vdata=245"; } ,0);
+
+	}
+	else if(userAgent.match(/Android/)) { //안드로이드일 때
+		if("https://dev.tune-h.com" == "https://www.tune-h.com"){
+			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health.dev;end';
+		}else{
+			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health;end';
+		}
+	}
+}
+	</script>
     <style>
 
         body {
