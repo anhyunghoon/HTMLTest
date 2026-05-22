@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <title>LINA APP LINK</title>
+
+    <script>
+
+        window.onload = function () {
+
+            const ua = navigator.userAgent;
+
+            // iOS
+            if (/iPhone|iPad|iPod/i.test(ua)) {
+
+                setTimeout(function () {
+
+                    location.href =
+                        "https://apps.apple.com/app/id6446927821";
+
+                }, 500);
+            }
+
+            // Android
+            else if (/Android/i.test(ua)) {
+
+                setTimeout(function () {
+
+                    location.href =
+                        "market://details?id=lina.channel.ldc.app";
+
+                }, 500);
+            }
+        };
+
+    </script>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 80px;
+            font-size: 28px;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 24px;
+            border-radius: 8px;
+            background: #007aff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>라이나 앱 설치</h1>
+
+    <p>
+        앱 설치 후 서비스를 이용할 수 있습니다.
+    </p>
+
+    <!-- iOS -->
+    <a
+        class="button"
+        href="https://apps.apple.com/app/id6446927821">
+
+        App Store 이동
+
+    </a>
+
+    <br /><br />
+
+    <!-- Android -->
+    <a
+        class="button"
+        href="market://details?id=lina.channel.ldc.app">
+
+        Play Store 이동
+
+    </a>
+
+</body>
+
+</html>
