@@ -85,6 +85,207 @@ function fnGoApp(){
 		}
 	}
 }
+function fnGoLDCApp4(){
+
+	if (userAgent.match(/iPhone/)) {
+		var visitTime = (new Date()).getTime();
+
+		setTimeout(function () {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		}, 2500);
+
+		var anchor = document.createElement('a');
+		anchor.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+		anchor.style.display = 'none';
+		document.body.appendChild(anchor);
+		anchor.click();
+		document.body.removeChild(anchor);
+	}
+}
+
+function fnGoLDCApp3(){
+
+	if (userAgent.match(/iPhone/)) {
+		var visitTime = (new Date()).getTime();
+
+		setTimeout(function () {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		}, 2500);
+
+		// ❌ 기존: location.href = "ldcapp-url://..."; → Safari 에러 팝업 발생
+		// ✅ 변경: iframe으로 호출
+		var iframe = document.createElement('iframe');
+		iframe.style.cssText = 'display:none; width:0; height:0; border:none;';
+		iframe.src = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+		document.body.appendChild(iframe);
+
+		setTimeout(function () {
+			document.body.removeChild(iframe);
+		}, 2000);
+	}
+
+}
+function fnGoLDCApp1(){
+	// 기존 visitTime 변수가 위에 선언되어 있다고 가정합니다.
+	var visitTime = (new Date()).getTime();
+
+	if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+		var isPageHidden = false;
+
+		// 사용자가 앱으로 이동해서 화면이 가려지면 앱스토어로 이동하지 않도록 플래그 설정
+		document.addEventListener("visibilitychange", function() {
+			if (document.hidden) {
+				isPageHidden = true;
+			}
+		});
+
+		setTimeout(function() {
+			// 페이지가 백그라운드로 전환되지 않았다면 (즉, 앱이 안 열려서 웹에 머물러 있다면)
+			if (!isPageHidden && ((new Date()).getTime() - visitTime < 3500)) {
+				// 사파리에서는 안전하게 https:// 형태의 앱스토어 링크로 이동
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		}, 2500);
+		
+		//setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+	}
+
+}
+
+function fnGoLDCApp(){
+	var userAgent = navigator.userAgent;
+
+    if (userAgent.match(/iPhone|iPad/)) {
+
+        var hidden = false;
+        const timer = setTimeout(function () {
+
+            if (!hidden) {
+
+                location.href =
+                    "https://apps.apple.com/app/id6446927821";
+            }
+
+        }, 2000);
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (document.hidden) {
+
+                    hidden = true;
+
+                    clearTimeout(timer);
+                }
+            }
+        );
+        location.href =
+            "https://gruffly-eliminate-spray.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
+    }
+
+}
+
+function fnGoLDCApp5(){
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
+
+	if(userAgent.match(/iPhone|iPad/)) { //아이폰일때
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+				//location.href = "https://itunes.apple.com/app/id6446927821";
+				//location.href = "itms-apps://itunes.apple.com/app/id6446927821";
+				//location.href = "https://apps.apple.com/kr/app/%EB%9D%BC%EC%9D%B4%EB%82%98%EC%83%9D%EB%AA%85-%EB%AA%A8%EB%B0%94%EC%9D%BC/id6446927821";
+			}
+		},
+		2500);
+
+		//setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+
+		/*
+		var hidden = false;
+
+		const storeUrl = "https://apps.apple.com/app/id6446927821";
+		const appUrl = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+		const timer = setTimeout(function () {
+
+			if (!hidden) {
+				location.href = storeUrl;
+			}
+
+		}, 2000);
+
+		document.addEventListener("visibilitychange", function () {
+
+			if (document.hidden) {
+				hidden = true;
+				clearTimeout(timer);
+			}
+
+		});
+
+		location.href = appUrl;
+		*/
+		/*
+		const appUrl = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
+
+		const storeUrl = "https://apps.apple.com/app/id6446927821";
+
+		const iframe = document.createElement("iframe");
+
+		iframe.style.display = "none";
+		iframe.src = appUrl;
+
+		document.body.appendChild(iframe);
+
+		setTimeout(function () {
+			location.href = storeUrl;
+		}, 1500);
+		*/
+
+	}
+	else if(userAgent.match(/Android/)) { //안드로이드일 때
+		//location.href = 'intent:\/\/qa-m.digitallina.com/landing/marketing/guarantee#Intent;scheme=ldcapp-url;package=lina.channel.ldc.app.qa;end';
+		/*
+		location.href = 'ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee';
+
+			// 앱 미설치 시 마켓 이동 타이머
+        setTimeout(function() {
+				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
+				const storeUrl = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}";
+				window.location.href = storeUrl;
+        }, 1000);
+		*/
+		/*
+		location.href =
+			'intent://qa-m.digitallina.com/landing/marketing/guarantee#Intent;' +
+			'scheme=ldcapp-url;' +
+			'package=lina.channel.ldc.app;' +
+			'S.browser_fallback_url=' +
+				encodeURIComponent(
+  					'market://details?id=lina.channel.ldc.app'
+				) +
+		';end';
+		*/
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
+				//const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				const storeUrl = `market://details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				location.href = storeUrl;
+				
+			}
+		},
+		2500);
+
+		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+	}
+}
+
 function goToAppStore() {
     // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
     navigator.clipboard.writeText("myapp://product/12345");
@@ -163,6 +364,7 @@ digitalData ={
     <div class="btn_wrappp">
 	    <ul>
 		    <li></li><button type="button" onclick="fnGoApp();" class="btn_load">Tune H 열기</button></li>
+			<li></li><button type="button" onclick="fnGoLDCApp();" class="btn_load">LDC APP 열기</button></li>
 		    <li></li><button type="button" onclick="openNewWindow();" class="btn_load">window.open</button></li>
 			<li></li><button type="button" onclick="goToAppStore();" class="btn_load">Deep Link 열기(AppStore)</button></li>
 			<li></li><button type="button" onclick="goToGooglePlay();" class="btn_load">Deep Link 열기(GooglePlay)</button></li>
@@ -189,6 +391,7 @@ digitalData ={
 			<li><a href="https://anhyunghoon.github.io/HTMLTest/share?product_id=12345&from=katalk">앱에서 상품 보기 (ID: 12345)</a></li>
 			<li><a href="https://anhyunghoon.github.io/HTMLTest/.well-known/apple-app-site-association">aasa 링크 클릭</a></li>
 			<li><a href="https://gruffly-eliminate-spray.ngrok-free.dev/.well-known/apple-app-site-association">aasa 링크 클릭</a></li>
+			<li><a href="https://gruffly-eliminate-spray.ngrok-free.dev/index.html">ngrok index 링크 클릭</a></li>
 			<li><a href="https://gruffly-eliminate-spray.ngrok-free.dev/applinks?url=https://dev-m.digitallina.com/landing/marketing/guarantee">Universal 링크 클릭</a></li>
 
 			
