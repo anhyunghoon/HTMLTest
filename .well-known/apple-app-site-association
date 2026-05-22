@@ -9,7 +9,7 @@
           "6P4SJSJP9L.lina.channel.ldc.mobile.stg",
           "5X8Z8WNGD6.lina.channel.ldc.mobile"
         ],
-        "paths": [ "*" ,"/share"]
+		 "paths": [ "/applinks"]
       }
     ]
   }
