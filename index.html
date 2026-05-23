@@ -101,38 +101,49 @@ function fnGoLDCApp9(){
     }
 
 }
-
-function fnGoLDCAppIOS(){
+function fnGoLDCAppIOS3() {
     var userAgent = navigator.userAgent;
 
-    if (userAgent.match(/iPhone|iPad/)) { // 아이폰, 아이패드일 때
-        
-        // 1. [핵심] 유니버셜 링크 주소를 '먼저' 실행하여 앱 구동을 시도합니다.
-        // 앱이 설치되어 있다면 이 순간 사파리가 닫히고 앱이 즉시 켜집니다.
-        location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
+    if (userAgent.match(/iPhone|iPad/i)) {
 
-        // 2. 만약 앱이 없다면 사파리는 화면을 이동(ngrok 페이지 로딩)하기 시작합니다.
-        // 페이지가 완전히 넘어가기 전, 브라우저가 정지하기 직전의 짧은 찰나(약 0.5초~1초)를 감지합니다.
-        var visitTime = (new Date()).getTime();
-        
-        var timer = setInterval(function() {
-            var currentTime = (new Date()).getTime();
-            
-            // 유니버셜 링크를 찌른 후, 화면이 ngrok 페이지로 완전히 넘어가기 전(1초 미만)인지 체크
-            if (currentTime - visitTime < 1000) {
-                // 아직 브라우저가 ngrok 페이지를 완전히 그리기 전(로딩 중) 상태라면
-                // 앱이 없다고 판단되므로, 이 타이밍에 강제로 ngrok 경로 대신 앱스토어 주소로 가로챕니다!
-                location.href = "https://apps.apple.com/app/id6446927821";
-                clearInterval(timer);
-            } else {
-                // 일정 시간이 지나 완전히 페이지가 넘어갔다면 인터벌을 종료합니다.
-                clearInterval(timer);
-            }
-        }, 100); // 0.1초마다 미세하게 스캔
+        // ✅ 방법 1: 링크 태그를 동적으로 생성해서 클릭 (권장)
+        var link = document.createElement('a');
+        link.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // ✅ 앱 미설치 시 폴백: 앱스토어로 이동
+        // (Universal Link가 앱을 열면 아래 코드는 실행되지 않음)
+        setTimeout(function () {
+            window.location.href = "https://apps.apple.com/app/id6446927821";
+        }, 2000); // 2초 안에 앱이 열리지 않으면 앱스토어로
     }
 }
 
-function fnGoLDCAppIOSOne(){
+function fnGoLDCAppIOS2() {
+    var userAgent = navigator.userAgent;
+
+    if (userAgent.match(/iPhone|iPad/i)) {
+
+        // ✅ 방법 1: 링크 태그를 동적으로 생성해서 클릭 (권장)
+        var link = document.createElement('a');
+        link.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // ✅ 앱 미설치 시 폴백: 앱스토어로 이동
+        // (Universal Link가 앱을 열면 아래 코드는 실행되지 않음)
+        setTimeout(function () {
+            window.location.href = "https://apps.apple.com/app/id6446927821";
+        }, 2000); // 2초 안에 앱이 열리지 않으면 앱스토어로
+    }
+}
+
+function fnGoLDCAppIOS(){ // 여태까지 가장 베스트
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
@@ -444,6 +455,8 @@ digitalData ={
 			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/.well-known/apple-app-site-association">aasa 링크 클릭</a></li>
 			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/index.html">ngrok index 링크 클릭</a></li>
 			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://dev-m.digitallina.com/landing/marketing/guarantee">Universal 링크 클릭</a></li>
+
+			<li><a href="https://m.wooricard.com/dcmw/yh1/mlf/mlf03/useadv/M1MLF203S00.do">우리은행 설치 안내페이지클릭</a></li>
 
 
 			

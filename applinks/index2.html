@@ -2,169 +2,89 @@
 <html lang="ko">
 
 <head>
-
     <meta charset="utf-8" />
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-
-    <title>LINA APP LINK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>라이나생명 서비스 연결 안내</title>
 
     <script>
-
         // 새로고침 중복 방지
         let isReloaded = false;
 
         // 앱 실행 함수
-        function fnGoLDCApp1() {
-
+        function fnGoLDCApp() {
             const userAgent = navigator.userAgent;
-
             const visitTime = (new Date()).getTime();
 
             // iPhone
             if (/iPhone|iPad|iPod/i.test(userAgent)) {
-
                 // 앱 미설치 시 App Store 이동
                 setTimeout(function () {
-
                     // 아직 Safari 에 남아있으면
-                    if (
-                        (new Date()).getTime() - visitTime < 3000
-                    ) {
-
+                    if ((new Date()).getTime() - visitTime < 3000) {
                         location.href = "https://apps.apple.com/app/id6446927821";
                     }
-
                 }, 2500);
 
                 // Universal Link 실행
                 setTimeout(function () {
-
-                    location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee";
-
+                    location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
                 }, 0);
             }
-
             // Android
             else if (/Android/i.test(userAgent)) {
-
                 setTimeout(function () {
-
-                    location.href =
-                        "market://details?id=lina.channel.ldc.app";
-
+                    location.href = "market://details?id=lina.channel.ldc.app";
                 }, 500);
             }
         }
 
-        function fnGoLDCApp(){
-            var userAgent = navigator.userAgent;
-            var visitTime = (new Date()).getTime();
-
-            if(userAgent.match(/iPhone/)) { //아이폰일때
-                setTimeout(function() {
-                    if ((new Date()).getTime() - visitTime < 3000) {
-                        location.href = "https://apps.apple.com/app/id6446927821";
-                    }
-                },
-                2500);
-
-                location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"
-
-            }
-            
-        }
-
         // 페이지 진입 시 실행
         window.onload = function () {
-
-            //fnGoLDCApp();
+            // 자동 실행이 필요할 경우 아래 주석을 해제하세요.
+            // fnGoLDCApp();
         };
 
         // 새로고침 함수
         function refreshPage() {
-
-            if (isReloaded) {
-                return;
-            }
-
+            if (isReloaded) return;
             isReloaded = true;
-
             console.log("페이지 새로고침");
-
             location.reload();
         }
 
         // 백그라운드 → 포그라운드 복귀 감지
-        document.addEventListener(
-            "visibilitychange",
-            function () {
-
-                // 다시 화면이 보이면
-                if (!document.hidden) {
-
-                    refreshPage();
-                }
-            }
-        );
-
-        // Safari BFCache 대응
-        window.addEventListener(
-            "pageshow",
-            function (event) {
-
-                // 캐시 복귀
-                if (event.persisted) {
-
-                    refreshPage();
-                }
-            }
-        );
-
-        // 일부 브라우저 대응
-        window.addEventListener(
-            "focus",
-            function () {
-
+        document.addEventListener("visibilitychange", function () {
+            if (!document.hidden) {
                 refreshPage();
             }
-        );
+        });
 
+        // Safari BFCache 대응
+        window.addEventListener("pageshow", function (event) {
+            if (event.persisted) {
+                refreshPage();
+            }
+        });
+
+        // 일부 브라우저 대응
+        window.addEventListener("focus", function () {
+            refreshPage();
+        });
     </script>
 
     <style>
-
         body {
             margin: 0;
-            padding: 40px;
-            font-family: sans-serif;
-            text-align: center;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        h1 {
-            margin-top: 80px;
-            font-size: 28px;
-        }
-
-        p {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #666;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 24px;
-            border-radius: 8px;
-            background: #007aff;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        
         .container {
             max-width: 400px;
             width: 90%;
@@ -189,21 +109,77 @@
             font-size: 28px;
             margin: 0 auto 24px auto;
         }
-         .btn-group {
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+            color: #111111;
+        }
+
+        p {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+            margin: 0 0 32px 0;
+            word-break: keep-all;
+        }
+
+        .btn-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-    </style>
+        .button {
+            display: block;
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.1s;
+            box-sizing: border-box;
+        }
 
+        .button:active {
+            transform: scale(0.98);
+        }
+
+        /* iOS 스타일 버튼 */
+        .btn-ios {
+            background: #007aff;
+            color: #ffffff;
+        }
+        .btn-ios:active {
+            background: #0056b3;
+        }
+
+        /* Android 스타일 버튼 */
+        .btn-android {
+            background: #34a853;
+            color: #ffffff;
+        }
+        .btn-android:active {
+            background: #24753a;
+        }
+
+        .footer-notice {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
         <!-- 상단 안내 아이콘 -->
-        <!-- <div class="icon-box">📱</div> -->
+        <div class="icon-box">📱</div>
 
         <h1>안전한 서비스 이용을 위해<br>앱 설치가 필요합니다</h1>
         
@@ -226,7 +202,8 @@
         </div>
 
         <div class="footer-notice">
-            이미 앱이 설치되어 있는 경우 상단 열기 버튼을 클릭 하여 앱이 실행하세요.<br>
+            이미 앱이 설치되어 있는 경우 자동으로 앱이 실행됩니다.<br>
+            화면 이동이 멈춘 경우에만 위의 버튼을 눌러주세요.
         </div>
     </div>
 
