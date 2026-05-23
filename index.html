@@ -143,7 +143,7 @@ function fnGoLDCAppIOS2() {
     }
 }
 
-function fnGoLDCAppIOS(){ // 여태까지 가장 베스트
+function fnGoLDCAppIOS4(){ // 여태까지 가장 베스트
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
@@ -158,6 +158,26 @@ function fnGoLDCAppIOS(){ // 여태까지 가장 베스트
 		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
 
 	}
+}
+
+function fnGoLDCAppIOS(){
+
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
+
+	if(userAgent.match(/iPhone/)) { //아이폰일때
+		setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				location.href = "https://apps.apple.com/app/id6446927821";
+			}
+		},
+		2500
+	);
+
+	setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+
+	}
+
 }
 
 function fnGoLDCApp7(){
@@ -268,7 +288,8 @@ function fnGoLDCApp() {
 	}
 }
 
-function fnGoLDCAppAndroid() {
+
+function fnGoLDCAppAndroid() {// 베스트
 // 1. 목적지 타깃 데이터 정의
     const targetUrl = "https://m.lina.co.kr/landing/marketing/guarantee";
     
@@ -454,7 +475,7 @@ digitalData ={
 
 			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/.well-known/apple-app-site-association">aasa 링크 클릭</a></li>
 			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/index.html">ngrok index 링크 클릭</a></li>
-			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://dev-m.digitallina.com/landing/marketing/guarantee">Universal 링크 클릭</a></li>
+			<li><a href="https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.com/landing/marketing/guarantee">Universal 링크 클릭</a></li>
 
 			<li><a href="https://m.wooricard.com/dcmw/yh1/mlf/mlf03/useadv/M1MLF203S00.do">우리은행 설치 안내페이지클릭</a></li>
 
