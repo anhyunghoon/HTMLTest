@@ -187,13 +187,18 @@ function fnGoLDCApp(){
 		//setTimeout(function() { location.href = "tunehApp://?vdata=245"; } ,0);
 
 	}
-	else if(userAgent.match(/Android/)) { //안드로이드일 때
-		if("https://dev.tune-h.com" == "https://www.tune-h.com"){
-			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health.dev;end';
-		}else{
-			location.href = 'intent:\/\/authmail?vdata=245#Intent;scheme=tunehapp;package=com.ck.health;end';
-		}
-	}
+	setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
+				//const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				const storeUrl = `market://details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				location.href = storeUrl;
+				
+			}
+		},
+		2500);
+
+		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
 }
 
 function fnGoLDCApp7(){

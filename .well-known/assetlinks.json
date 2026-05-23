@@ -1,0 +1,42 @@
+[
+          {
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target": {
+                      "namespace": "android_app",
+                      "package_name": "lina.channel.ldc.app.dev",
+                      "sha256_cert_fingerprints": [
+                                "47:FA:8C:D8:21:F1:F0:FB:33:74:96:83:5B:59:56:50:89:61:F2:69:13:51:92:26:BD:F5:A5:CA:03:B4:5B:6A",
+                                "E6:0A:47:45:72:74:64:D2:8B:4E:2D:83:80:BD:61:0C:A8:16:DA:27:0A:1D:C3:7A:6B:BC:99:0C:CF:72:87:83",
+                                "7C:5D:51:14:7A:07:97:D3:80:07:F6:5B:2F:2D:CB:24:8D:60:3B:9D:9B:67:75:84:6A:FD:94:CB:3B:07:2E:5E",
+                                "A0:E3:31:C1:92:8B:3B:5E:83:01:D5:69:FC:E4:F0:C4:AA:FE:1B:3B:D2:36:98:2B:F4:B5:03:25:F8:F7:C4:AA"
+                      ]
+                    }
+          },
+          {
+                    "relation": ["delegate_permission/common.handle_all_urls"],
+                    "target": {
+                              "namespace": "android_app",
+                              "package_name": "lina.channel.ldc.app.qa",
+                              "sha256_cert_fingerprints": [
+                                        "47:FA:8C:D8:21:F1:F0:FB:33:74:96:83:5B:59:56:50:89:61:F2:69:13:51:92:26:BD:F5:A5:CA:03:B4:5B:6A",
+                                         "E6:0A:47:45:72:74:64:D2:8B:4E:2D:83:80:BD:61:0C:A8:16:DA:27:0A:1D:C3:7A:6B:BC:99:0C:CF:72:87:83",
+                                         "7C:5D:51:14:7A:07:97:D3:80:07:F6:5B:2F:2D:CB:24:8D:60:3B:9D:9B:67:75:84:6A:FD:94:CB:3B:07:2E:5E",
+                                        "A0:E3:31:C1:92:8B:3B:5E:83:01:D5:69:FC:E4:F0:C4:AA:FE:1B:3B:D2:36:98:2B:F4:B5:03:25:F8:F7:C4:AA"
+                              ]
+                    }
+          },
+          {
+                    "relation": ["delegate_permission/common.handle_all_urls"],
+                    "target": {
+                              "namespace": "android_app",
+                              "package_name": "lina.channel.ldc.app",
+                              "sha256_cert_fingerprints": [
+                                        "47:FA:8C:D8:21:F1:F0:FB:33:74:96:83:5B:59:56:50:89:61:F2:69:13:51:92:26:BD:F5:A5:CA:03:B4:5B:6A",
+                                         "E6:0A:47:45:72:74:64:D2:8B:4E:2D:83:80:BD:61:0C:A8:16:DA:27:0A:1D:C3:7A:6B:BC:99:0C:CF:72:87:83",
+                                         "7C:5D:51:14:7A:07:97:D3:80:07:F6:5B:2F:2D:CB:24:8D:60:3B:9D:9B:67:75:84:6A:FD:94:CB:3B:07:2E:5E",
+                                        "A0:E3:31:C1:92:8B:3B:5E:83:01:D5:69:FC:E4:F0:C4:AA:FE:1B:3B:D2:36:98:2B:F4:B5:03:25:F8:F7:C4:AA"
+                              ]
+                    }
+          }
+
+]
