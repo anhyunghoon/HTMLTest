@@ -171,11 +171,27 @@ function fnGoLDCAppIOS(){
 				location.href = "https://apps.apple.com/app/id6446927821";
 			}
 		},
-		2500
-	);
+		2500);
 
-	setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		
+		//alert(userAgent);
+		
+		const isSafari =  /Safari/i.test(userAgent) && 
+                     !/CriOS/i.test(userAgent) && 
+                     !/FxiOS/i.test(userAgent) && 
+                     !/KAKAOTALK/i.test(userAgent) && 
+                     !/NAVER/i.test(userAgent);
 
+		
+		
+		//alert(isSafari);
+
+		if (isSafari) {
+			setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		} else {
+		 	// 아래를 사파리 브라우저에서 사용하는 경우 주소가 유효하지 않기 때무네 safari가 해당 페이지를 열수 없습니다.
+			setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		}
 	}
 
 }
