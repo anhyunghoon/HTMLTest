@@ -69,100 +69,33 @@ function fnGoApp(){
 
 
 
-function fnGoLDCApp9(){
-	var userAgent = navigator.userAgent;
 
-    if (userAgent.match(/iPhone|iPad/)) {
-
-        var hidden = false;
-        const timer = setTimeout(function () {
-
-            if (!hidden) {
-
-                location.href = "https://apps.apple.com/app/id6446927821";
-            }
-
-        }, 2000);
-        document.addEventListener(
-            "visibilitychange",
-            function () {
-
-                if (document.hidden) {
-
-                    hidden = true;
-
-                    clearTimeout(timer);
-                }
-            }
-        );
-        //location.href = "https://gruffly-eliminate-spray.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
-		location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
-		
-    }
-
-}
-function fnGoLDCAppIOS3() {
-    var userAgent = navigator.userAgent;
-
-    if (userAgent.match(/iPhone|iPad/i)) {
-
-        // ✅ 방법 1: 링크 태그를 동적으로 생성해서 클릭 (권장)
-        var link = document.createElement('a');
-        link.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // ✅ 앱 미설치 시 폴백: 앱스토어로 이동
-        // (Universal Link가 앱을 열면 아래 코드는 실행되지 않음)
-        setTimeout(function () {
-            window.location.href = "https://apps.apple.com/app/id6446927821";
-        }, 2000); // 2초 안에 앱이 열리지 않으면 앱스토어로
-    }
-}
-
-function fnGoLDCAppIOS2() {
-    var userAgent = navigator.userAgent;
-
-    if (userAgent.match(/iPhone|iPad/i)) {
-
-        // ✅ 방법 1: 링크 태그를 동적으로 생성해서 클릭 (권장)
-        var link = document.createElement('a');
-        link.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // ✅ 앱 미설치 시 폴백: 앱스토어로 이동
-        // (Universal Link가 앱을 열면 아래 코드는 실행되지 않음)
-        setTimeout(function () {
-            window.location.href = "https://apps.apple.com/app/id6446927821";
-        }, 2000); // 2초 안에 앱이 열리지 않으면 앱스토어로
-    }
-}
-
-function fnGoLDCAppIOS4(){ // 여태까지 가장 베스트
-	var userAgent = navigator.userAgent;
+function fnGoLDCAppIOS3() { // 앱 딥링크 방식
+   var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
-	if(userAgent.match(/iPhone/)) { //아이폰일때
-		setTimeout(function() {
+	if (userAgent.match(/iPhone/)) {
+
+		// ✅ 타이머 ID를 변수에 저장
+		var appStoreTimer = setTimeout(function () {
 			if ((new Date()).getTime() - visitTime < 3000) {
 				location.href = "https://apps.apple.com/app/id6446927821";
 			}
-		},
-		2500);
+		}, 2500);
 
-		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		const isSafari = /Safari/i.test(userAgent) &&
+			!/CriOS/i.test(userAgent) &&
+			!/FxiOS/i.test(userAgent) &&
+			!/KAKAOTALK/i.test(userAgent) &&
+			!/NAVER/i.test(userAgent);
+
+		setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
 
 	}
 }
 
-function fnGoLDCAppIOS(){ // 베스트
-
-	var userAgent = navigator.userAgent;
+function fnGoLDCAppIOS2() { // 앱 univeral 방식
+   var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
 	if(userAgent.match(/iPhone/)) { //아이폰일때
@@ -186,12 +119,12 @@ function fnGoLDCAppIOS(){ // 베스트
 		
 		//alert(isSafari);
 
-		setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
 	}
 
 }
 
-function fnGoLDCAppIOS5(){ // 베스트
+function fnGoLDCAppIOS1(){ // 베스트 univeral & 앱 딥링크 혼용 방식
 
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
