@@ -42,6 +42,12 @@ $("body").ready(function(){
 	
 
 <script type="text/javascript">
+
+let targetUrl = "https://qa-m.digitallina.com/landing/marketing/guarantee"
+//let universalLinkUrl = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee";
+let universalLinkUrl = "https://gruffly-eliminate-spray.ngrok-free.dev/applinks?url=";
+let deepLinkUrl = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"
+
 function fnGoApp(){
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
@@ -70,7 +76,7 @@ function fnGoApp(){
 
 
 
-function fnGoLDCAppIOS3() { // 앱 딥링크 방식
+function fnGoLDCAppIOS3() { 			// fnGoLDCAppIOS3 앱 딥링크 방식. 사파리브라우저(O),chrome(O),kakao 브라우저(O)
    var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
@@ -89,12 +95,12 @@ function fnGoLDCAppIOS3() { // 앱 딥링크 방식
 			!/KAKAOTALK/i.test(userAgent) &&
 			!/NAVER/i.test(userAgent);
 
-		setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		setTimeout(function() { location.href = deepLinkUrl ; } ,0);
 
 	}
 }
 
-function fnGoLDCAppIOS2() { // 앱 univeral 방식
+function fnGoLDCAppIOS2() { // fnGoLDCAppIOS2 앱 univeral 방식    사파리브라우저(O),chrome(X),kakao 브라우저(X)
    var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
 
@@ -119,12 +125,12 @@ function fnGoLDCAppIOS2() { // 앱 univeral 방식
 		
 		//alert(isSafari);
 
-		setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+		setTimeout(function() { location.href = universalLinkUrl+targetUrl; } ,0);
 	}
 
 }
 
-function fnGoLDCAppIOS1(){ // 베스트 univeral & 앱 딥링크 혼용 방식
+function fnGoLDCAppIOS_good(){ // fnGoLDCAppIOS_good 베스트 univeral & 앱 딥링크 혼용 방식. 사파리브라우저(O),chrome(0),kakao 브라우저(O)
 
 	var userAgent = navigator.userAgent;
 	var visitTime = (new Date()).getTime();
@@ -151,10 +157,10 @@ function fnGoLDCAppIOS1(){ // 베스트 univeral & 앱 딥링크 혼용 방식
 		//alert(isSafari);
 
 		if (isSafari) {
-			setTimeout(function() { location.href = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=https://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+			setTimeout(function() { location.href = universalLinkUrl+targetUrl; } ,0);
 		} else {
 		 	// 아래를 사파리 브라우저에서 사용하는 경우 주소가 유효하지 않기 때문에 Safari가 해당 페이지를 열수 없습니다.
-			setTimeout(function() { location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"; } ,0);
+			setTimeout(function() { location.href = deepLinkUrl ; } ,0);
 		}
 	}
 
@@ -244,7 +250,7 @@ function fnGoLDCApp7(){
 		*/
 		setTimeout(function() {
 			if ((new Date()).getTime() - visitTime < 3000) {
-				const targetPath = encodeURIComponent("ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee");
+				const targetPath = encodeURIComponent(deepLinkUrl);
 				//const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
 				const storeUrl = `market://details?id=lina.channel.ldc.app&referrer=${targetPath}`;
 				location.href = storeUrl;
@@ -253,7 +259,7 @@ function fnGoLDCApp7(){
 		},
 		2500);
 
-		setTimeout(function() { location.href = "ldcapp-url://qa-m.digitallina.com/landing/marketing/guarantee"; } ,0);
+		setTimeout(function() { location.href = deepLinkUrl; } ,0);
 	}
 }
 
@@ -269,19 +275,16 @@ function fnGoLDCApp() {
 }
 
 
-function fnGoLDCAppAndroid() {// 베스트
-// 1. 목적지 타깃 데이터 정의
-    const targetUrl = "https://m.lina.co.kr/landing/marketing/guarantee";
+function fnGoLDCAppAndroid() { // fnGoLDCAppAndroid_good App Links 방식.  (베스트) 삼성브라우저(O),chrome(0),kakao 브라우저(X)
     
-    // 2. 패키지명 정의
-    const packageName = "lina.channel.ldc.app";
+	const packageName = "lina.channel.ldc.app";
 
     // 3. [핵심] 안드로이드 브라우저 전용 Intent 인코딩 주소 설계
     // - scheme: 원래 열려야 할 딥링크 프로토콜 명시 (우리는 https)
     // - package: 앱이 없을 때 구글 플레이 스토어에서 찾아갈 패키지명 자동 지정
     // - S.url: 안드로이드 인텐트 엑스트라(Bundle)나 Uri 데이터로 전달할 쿼리 파라미터 빌드
     const intentUrl = 
-        "intent://rekindle-nag-jacket.ngrok-free.dev/applinks?url=" + encodeURIComponent(targetUrl) + 
+        universalLinkUrl + encodeURIComponent(targetUrl) + 
         "#Intent;" +
         "scheme=https;" +
         "package=" + packageName + ";" +
@@ -298,51 +301,77 @@ function fnGoLDCAppAndroid() {// 베스트
         alert("이 기능은 안드로이드 기기에서만 작동합니다.");
     }
 }
-function fnGoLDCAppAndroidOne() {
-            // 1. 목적지 타깃 데이터 정의
-            const targetUrl = "https://m.lina.co.kr/landing/marketing/guarantee";
-            
-            // 2. 내 테스트 ngrok 주소 기반의 정식 App Link 주소 구성
-            const appLinkUrl = "https://rekindle-nag-jacket.ngrok-free.dev/applinks?url=" + encodeURIComponent(targetUrl);
-            
-            // 3. 내 앱의 구글 플레이 스토어 주소 (설치 안 되었을 때 이동할 곳)
-            // 'lina.channel.ldc.app' 대신 실제 개발 중이신 패키지명을 적어주세요.
-            const playStoreUrl = "market://details?id=lina.channel.ldc.app";
-            const playStoreWebUrl = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app";
 
-            // 사용자가 모바일 안드로이드 기기에서 접속했는지 1차 검증
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isAndroid = userAgent.indexOf("android") > -1;
+function fnGoLDCAppAndroid1() {     // fnGoLDCAppAndroid1 App Links 방식 , 삼성브라우저(O),chrome(0),kakao 브라우저(X)
+		
+		const appLinkUrl = universalLinkUrl + encodeURIComponent(targetUrl);
+		
+		// 3. 내 앱의 구글 플레이 스토어 주소 (설치 안 되었을 때 이동할 곳)
+		// 'lina.channel.ldc.app' 대신 실제 개발 중이신 패키지명을 적어주세요.
+		const playStoreUrl = "market://details?id=lina.channel.ldc.app";
+		const playStoreWebUrl = "https://play.google.com/store/apps/details?id=lina.channel.ldc.app";
 
-            if (!isAndroid) {
-                alert("이 기능은 안드로이드 기기에서만 테스트 가능합니다.");
-                return;
-            }
+		// 사용자가 모바일 안드로이드 기기에서 접속했는지 1차 검증
+		const userAgent = navigator.userAgent.toLowerCase();
+		const isAndroid = userAgent.indexOf("android") > -1;
 
-            // [핵심 분기 로직] 타이머를 이용한 설치 검증 후 처리
-            // 앱이 설치되어 있다면 App Links 규칙에 의해 브라우저가 백그라운드로 숨고 앱이 켜집니다.
-            // 앱이 없다면 브라우저에 그대로 남아 타이머가 작동하여 스토어로 이동시킵니다.
-            
-            const startTime = Date.now();
-            
-            // 일단 앱 링크 주소로 화면 이동을 시도합니다.
-            window.location.href = appLinkUrl;
+		// [핵심 분기 로직] 타이머를 이용한 설치 검증 후 처리
+		// 앱이 설치되어 있다면 App Links 규칙에 의해 브라우저가 백그라운드로 숨고 앱이 켜집니다.
+		// 앱이 없다면 브라우저에 그대로 남아 타이머가 작동하여 스토어로 이동시킵니다.
+		
+		const startTime = Date.now();
+		
+		// 일단 앱 링크 주소로 화면 이동을 시도합니다.
+		window.location.href = appLinkUrl;
 
-            // 1.5초(1500ms) 후에 브라우저가 아직 포커스를 잡고 있는지 감지합니다.
-            setTimeout(function() {
-                // 사용자가 앱으로 전환되었다면 브라우저는 '숨김(이탈)' 상태가 되므로 시간 오차가 커지거나 동작이 멈춥니다.
-                // 만약 앱이 안 켜져서 브라우저화면에 그대로 남아있다면 대략 1.5초 직후에 이 내부 코드가 실행됩니다.
-                if (Date.now() - startTime < 2000) {
-                    // 앱이 설치되어 있지 않다고 판단 ➡️ 구글 플레이 스토어로 강제 이동
-                    if (navigator.userAgent.indexOf("Chrome") > -1) {
-                        // 크롬 브라우저 계열인 경우 마켓 인텐트 주소 유도
-                        window.location.href = playStoreUrl;
-                    } else {
-                        // 일반 기타 브라우저인 경우 웹 마켓 주소 유도
-                        window.location.href = playStoreWebUrl;
-                    }
-                }
-            }, 1500);
+		// 1.5초(1500ms) 후에 브라우저가 아직 포커스를 잡고 있는지 감지합니다.
+		setTimeout(function() {
+			// 사용자가 앱으로 전환되었다면 브라우저는 '숨김(이탈)' 상태가 되므로 시간 오차가 커지거나 동작이 멈춥니다.
+			// 만약 앱이 안 켜져서 브라우저화면에 그대로 남아있다면 대략 1.5초 직후에 이 내부 코드가 실행됩니다.
+			if (Date.now() - startTime < 2000) {
+				// 앱이 설치되어 있지 않다고 판단 ➡️ 구글 플레이 스토어로 강제 이동
+				if (navigator.userAgent.indexOf("Chrome") > -1) {
+					// 크롬 브라우저 계열인 경우 마켓 인텐트 주소 유도
+					window.location.href = playStoreUrl;
+				} else {
+					// 일반 기타 브라우저인 경우 웹 마켓 주소 유도
+					window.location.href = playStoreWebUrl;
+				}
+			}
+		}, 1500);
+}
+
+function fnGoLDCAppAndroid2() { // fnGoLDCAppAndroid2 // Custom Url Scheme 방식. 삼성브라우저(O),chrome(0),kakao 브라우저(O)
+
+	location.href =
+			'intent://qa-m.digitallina.com/landing/marketing/guarantee#Intent;' +
+			'scheme=ldcapp-url;' +
+			'package=lina.channel.ldc.app.qa;' +
+			'S.browser_fallback_url=' +
+				encodeURIComponent(
+  					'market://details?id=lina.channel.ldc.app'
+				) +
+	';end';
+
+
+	/*
+	var userAgent = navigator.userAgent;
+	var visitTime = (new Date()).getTime();
+	
+	setTimeout(function() {
+			if ((new Date()).getTime() - visitTime < 3000) {
+				const targetPath = encodeURIComponent(deepLinkUrl);
+				//const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				const storeUrl = `market://details?id=lina.channel.ldc.app&referrer=${targetPath}`;
+				location.href = storeUrl;
+				
+			}
+		},2500);
+
+	location.href = deepLinkUrl;
+	*/
+	
+
 }
 
 function goToAppStore() {
@@ -354,14 +383,14 @@ function goToAppStore() {
 
 function goToGooglePlay() {
     // 딥링크 정보를 클립보드에 저장 (iOS 앱에서 읽기 위함)
-    navigator.clipboard.writeText("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
+    navigator.clipboard.writeText(deepLinkUrl);
     // 앱스토어 이동
-    window.location.href = "ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee";
+    window.location.href = deepLinkUrl;
 }
 
 function goToGooglePlay1() {
 
-	const targetPath = encodeURIComponent("ldcapp-url://dev-m.digitallina.com/landing/marketing/guarantee");
+	const targetPath = encodeURIComponent(deepLinkUrl);
 	const storeUrl = `https://play.google.com/store/apps/details?id=lina.channel.ldc.app&referrer=${targetPath}`;
 
 	window.location.href = storeUrl;
