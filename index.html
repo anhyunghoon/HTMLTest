@@ -64,10 +64,59 @@ function fnGoApp(){
 	}
 }
 
+// 앱으로 이동 후 다시 브라우저 페이지로 이동하면 마켓으로 이동해 있는 것 해결
+function fnGoLDCAppIOS() {   // fnGoLDCAppIOS4 외부 스키마 딥링크 방식. 사파리브라우저(O),chrome(O),kakao 브라우저(O)
+    
+	var userAgent = navigator.userAgent;
+    var visitTime = new Date().getTime();
+    var appTimer = null; // 타이머 ID를 담을 변수
 
+    // 1. OS 및 마켓 URL 분기 처리
+    var isAndroid = /Android/i.test(userAgent);
+    var isIPhone = /iPhone|iPad|iPod/i.test(userAgent);
+    
+    var marketUrl = "";
 
+    if (isIPhone) {
+        marketUrl = "https://apps.apple.com/app/id6446927821"; // iOS 앱스토어
+    } else if (isAndroid) {
+        marketUrl = "market://details?id=lina.channel.ldc.mobile"; // 안드로이드 플레이스토어 스키마 (또는 https://play.google.com/...)
+    } else {
+        return; // PC 환경 등은 예외 처리
+    }
 
-function fnGoLDCAppIOS() { 			// fnGoLDCAppIOS3 외부 스키마 딥링크 방식. 사파리브라우저(O),chrome(O),kakao 브라우저(O)
+    // 2. 마켓 이동 타이머 작동 (앱이 안 열리면 2.5초 후 마켓 이동)
+    appTimer = setTimeout(function () {
+        var now = new Date().getTime();
+        // 사용자가 계속 브라우저 화면에 머물고 있을 때만 마켓으로 이동
+        
+		if (now - visitTime < 3000) {
+            location.href = marketUrl;
+        }
+    }, 2500);
+
+    // 3. ⭐ [핵심] 앱이 켜져서 브라우저가 백그라운드로 가거나 페이지가 숨겨지면 타이머 취소
+    function clearCustomTimer() {
+        if (appTimer) {
+            clearTimeout(appTimer);
+            appTimer = null;
+            console.log("앱 실행 감지: 마켓 이동 타이머 취소");
+        }
+    }
+
+    // 페이지가 가려지거나 다른 곳으로 이동할 때 이벤트 바인딩
+    window.addEventListener("pagehide", clearCustomTimer);
+    document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+            clearCustomTimer();
+        }
+    });
+
+    // 4. 딥링크 실행 (앱 호출)
+    location.href = deepLinkUrl;
+}
+
+function fnGoLDCAppIOS3() { 			// fnGoLDCAppIOS3 외부 스키마 딥링크 방식. 사파리브라우저(O),chrome(O),kakao 브라우저(O)
 	
 	var userAgent = navigator.userAgent;   	
 	var visitTime = (new Date()).getTime();
