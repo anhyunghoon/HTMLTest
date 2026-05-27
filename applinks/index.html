@@ -63,16 +63,20 @@
             var userAgent = navigator.userAgent;
             var visitTime = (new Date()).getTime();
 
-            if(userAgent.match(/iPhone/)) { //아이폰일때
-                setTimeout(function() {
-                    if ((new Date()).getTime() - visitTime < 3000) {
+            if (userAgent.match(/iPhone/)) {
+                setTimeout(function () {
+                    if ((new Date()).getTime() - visitTime < 2500) {
                         location.href = "https://apps.apple.com/app/id6446927821";
                     }
-                },
-                2500);
+                }, 2500);
 
-                location.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee"
-
+                // ✅ <a> 태그로 커스텀 스킴 호출
+                var a = document.createElement('a');
+                a.href = "ldcapp-url://m.lina.co.kr/landing/marketing/guarantee";
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
             }
             
         }
@@ -81,6 +85,7 @@
         window.onload = function () {
 
             //fnGoLDCApp();
+            
         };
 
         // 새로고침 함수
